@@ -1,0 +1,249 @@
+/* General Styles */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #121212; /* Darker background */
+    color: #e0e0e0; /* Softer white text for better readability */
+    font-family: 'Roboto', Arial, sans-serif; /* Use a modern font */
+    line-height: 1.6; /* Improve text spacing */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff; /* Ensure headings are bright white */
+}
+
+p {
+    font-size: 1rem;
+    color: #cccccc; /* Softer text for paragraphs */
+}
+
+a {
+    color: #1db954; /* Green highlight */
+    text-decoration: none;
+    font-weight: bold; /* Make links more prominent */
+}
+
+a:hover {
+    color: #1ed760; /* Lighter green on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+footer {
+    margin-top: auto;
+    color: #6c757d; /* Optional: Text color */
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #000000; /* Black navbar */
+    border-bottom: 1px solid #333333; /* Subtle border */
+    padding: 0.8rem 1rem; /* Add padding for better spacing */
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1db954;
+    text-transform: uppercase; /* Make the brand name uppercase */
+}
+
+.navbar-brand:hover {
+    color: #1ed760;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 1rem; /* Add spacing between links */
+    text-transform: uppercase; /* Make links uppercase */
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    color: #1db954;
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Card Styles */
+.card {
+    border-radius: 15px; /* Rounder corners */
+    overflow: hidden;
+    background-color: #1c1c1c; /* Dark card background */
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 1.5rem; /* Add spacing between cards */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+}
+
+.card-img-top {
+    border-bottom: 2px solid #333333; /* Add a subtle border below the image */
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 0.5rem;
+}
+
+.card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Carousel */
+.carousel-inner img {
+    border-radius: 15px; /* Rounder corners for carousel images */
+    margin-bottom: 10px;
+}
+
+.carousel-inner h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff; /* White text for captions */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Stronger shadow for better readability */
+    margin-top: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    border-radius: 50%; /* Make the controls circular */
+    width: 40px;
+    height: 40px;
+    background-size: 100%; /* Ensure the icons are properly sized */
+}
+
+/* Pagination */
+.pagination .page-item.active .page-link {
+    background-color: #1db954;
+    border-color: #1db954;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 25px; /* Rounder pagination buttons */
+}
+
+.pagination .page-link {
+    color: #1db954;
+    border: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem; /* Add padding for better spacing */
+}
+
+.pagination .page-link:hover {
+    background-color: #333333;
+    color: #1db954;
+    border-radius: 25px; /* Ensure hover matches active style */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #1db954;
+    border-color: #1db954;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem; /* Add padding for better spacing */
+    border-radius: 25px; /* Rounder buttons */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #1ed760;
+    border-color: #1ed760;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Table */
+.table {
+    margin-bottom: 0;
+    color: #e0e0e0;
+}
+
+.table-custom-header {
+    background-color: #1c1c1c; /* Darker table header */
+    color: #ffffff; /* White text */
+    font-weight: bold;
+}
+
+
+
+.bg-primary {
+    background-color: #1c1c1c !important; /* Dark background */
+    color: #ffffff !important; /* White text */
+}
+
+
+.bi-check-lg {
+    font-size: 1.2rem; /* Adjust icon size */
+    vertical-align: middle; /* Align icon vertically */
+}
+
+/* Ensure the button is circular on smaller screens */
+@media (max-width: 820px) {
+    .btn-primary {
+        border-radius: 50%; /* Make the button circular */
+        height: 50px; /* Set a fixed height */
+        width: 50px; /* Set a fixed width */
+        padding: 0; /* Remove extra padding */
+        font-size: 1.2rem; /* Adjust font size for the icon */
+    }
+
+    .btn-primary i {
+        font-size: 1.5rem; /* Ensure the icon is large enough */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .card-img-top {
+        object-fit: contain; /* Show the full image on smaller screens */
+        height: auto; /* Allow the height to adjust automatically */
+    }
+
+    .carousel-inner img {
+        height: auto; /* Ensure carousel images are not cropped */
+    }
+
+    .navbar {
+        font-size: 0.9rem; /* Adjust navbar font size for smaller screens */
+    }
+
+        .col-md-4 {
+        margin: 0 auto; /* Center the column */
+        text-align: center; /* Center the content inside */
+    }
+
+    .col-md-4 img {
+        margin: 0 auto; /* Center the image */
+    }
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+}

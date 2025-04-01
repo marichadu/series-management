@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ serie.name }}{% endblock %}
+
+{% block body %}
+<!-- Full-page backdrop -->
+<div class="backdrop" style="background-image: url('{{ asset('images/backdrops/' ~ (serie.poster ?: 'default-backdrop.jpg')) }}');"></div>
+
+<div class="container mt-5 position-relative" style="z-index: 1;">
+    <!-- Series Details -->
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ asset('images/posters/series/' ~ serie.poster) }}" alt="{{ serie.name }}" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-8">
+            <h1 class="text-white">{{ serie.name }}</h1>
+            <p><strong>Overview:</strong> {{ serie.overview }}</p>
+            <p><strong>Status:</strong> {{ serie.status }}</p>
+            <p><strong>Vote:</strong> {{ serie.vote }}</p>
+            <p><strong>Popularity:</strong> {{ serie.popularity }}</p>
+            <p><strong>Genres:</strong> {{ serie.genres }}</p>
+            <p><strong>First Air Date:</strong> {{ serie.firstAirDate|date('Y-m-d') }}</p>
+            <p><strong>Last Air Date:</strong> {{ serie.lastAirDate|date('Y-m-d') }}</p>
+        </div>
+    </div>
+</div>
+
+    <hr>
+
+    <!-- Seasons Section -->
+    <div class="mt-4">
+        <h2 class="text-white mb-4">Seasons</h2>
+
+        <!-- Grid for larger screens -->
+        <div class="row d-none d-md-flex g-4">
+            {% for poster in seasonPosters %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card bg-dark text-white border-0 shadow-sm h-100">
+                        <img src="{{ asset('images/posters/seasons/' ~ poster) }}" alt="Season Poster" class="card-img-top img-fluid" style="height: 300px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Season {{ loop.index }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12 text-center">
+                    <p class="text-white">No season posters available.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Carousel for smaller screens -->
+        <div id="seasonCarousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for poster in seasonPosters %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <div class="text-center">
+                            <img src="{{ asset('images/posters/seasons/' ~ poster) }}" alt="Season Poster" class="d-block w-100 rounded" style="height: 300px; object-fit: contain;">
+                            <h5 class="mt-2 text-white">Season {{ loop.index }}</h5>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#seasonCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#seasonCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+        <form method="post" action="{{ path('series_delete', { id: serie.id }) }}" onsubmit="return confirm('Are you sure you want to delete this series?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ serie.id) }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+</div>
+{% endblock %}

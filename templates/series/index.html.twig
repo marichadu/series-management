@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series List{% endblock %}
+
+{% block body %}
+<div class="bg-primary text-white text-center py-4 mb-4">
+    <h1>Welcome to the Series List</h1>
+    <p>Explore your favorite TV series by clicking on their posters.</p>
+</div>
+
+<!-- Filter Form -->
+<div class="container mb-4">
+    <!-- Toggle Button for Mobile -->
+    <button class="btn btn-secondary w-100 d-md-none mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#filterForm" aria-expanded="false" aria-controls="filterForm">
+        Filters
+    </button>
+
+    <!-- Collapsible Filter Form -->
+    <div class="collapse d-md-block" id="filterForm">
+        <form method="get" class="row g-3 align-items-center">
+            <div class="col-md-3">
+                <input type="text" name="search" class="form-control" placeholder="Search by name or overview" value="{{ search }}">
+            </div>
+            <div class="col-md-2">
+                <select name="status" class="form-control">
+                    <option value="">All Statuses</option>
+                    <option value="ended" {% if status == 'ended' %}selected{% endif %}>Ended</option>
+                    <option value="returning" {% if status == 'returning' %}selected{% endif %}>Returning</option>
+                    <option value="canceled" {% if status == 'canceled' %}selected{% endif %}>Canceled</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="genre" class="form-control">
+                    <option value="">All Genres</option>
+                    <option value="Drama" {% if genre == 'Drama' %}selected{% endif %}>Drama</option>
+                    <option value="Comedy" {% if genre == 'Comedy' %}selected{% endif %}>Comedy</option>
+                    <option value="Sci-Fi" {% if genre == 'Sci-Fi' %}selected{% endif %}>Sci-Fi</option>
+                    <option value="Fantasy" {% if genre == 'Fantasy' %}selected{% endif %}>Fantasy</option>
+                    <option value="Crime" {% if genre == 'Crime' %}selected{% endif %}>Crime</option>
+                    <option value="Family" {% if genre == 'Family' %}selected{% endif %}>Family</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="sort" class="form-control">
+                    <option value="id" {% if sort == 'id' %}selected{% endif %}>ID</option>
+                    <option value="name" {% if sort == 'name' %}selected{% endif %}>Name</option>
+                    <option value="vote" {% if sort == 'vote' %}selected{% endif %}>Vote</option>
+                    <option value="popularity" {% if sort == 'popularity' %}selected{% endif %}>Popularity</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="direction" class="form-control">
+                    <option value="asc" {% if direction == 'asc' %}selected{% endif %}>Ascending</option>
+                    <option value="desc" {% if direction == 'desc' %}selected{% endif %}>Descending</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary w-100 d-flex justify-content-center align-items-center">
+                    <span class="d-none d-md-inline">Filter</span> <!-- Visible on medium and larger screens -->
+                    <i class="bi bi-check-lg d-md-none"></i> <!-- Visible on small screens -->
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Series List -->
+<div class="container">
+    <div class="row">
+        {% for serie in series %}
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <a href="{{ path('series_detail', { id: serie.id }) }}" class="text-decoration-none">
+                    <div class="card shadow-sm position-relative">
+                        <img src="{{ asset('images/posters/series/' ~ serie.poster) }}" alt="{{ serie.name }}" class="card-img-top img-fluid" style="height: 300px; object-fit: cover;">
+                        <div class="card-img-overlay d-flex align-items-end p-2" style="background: rgba(0, 0, 0, 0.5);">
+                            <h5 class="card-title text-white mb-0">{{ serie.name }}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="text-end mb-4">
+    <a href="{{ path('series_new') }}" class="btn btn-success">Add New Series</a>
+</div>
+
+
+<!-- Pagination -->
+<div class="pagination d-flex justify-content-center mt-4">
+    <nav>
+        <ul class="pagination">
+            {% if currentPage > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ currentPage - 1 }}&search={{ search }}&status={{ status }}&sort={{ sort }}&direction={{ direction }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in 1..(totalSeries / limit)|round(0, 'ceil') %}
+                {% if i == 1 or i == (totalSeries / limit)|round(0, 'ceil') or (i >= currentPage - 1 and i <= currentPage + 1) %}
+                    <li class="page-item {% if i == currentPage %}active{% endif %}">
+                        <a class="page-link" href="?page={{ i }}&search={{ search }}&status={{ status }}&sort={{ sort }}&direction={{ direction }}">{{ i }}</a>
+                    </li>
+                {% elseif i == currentPage - 2 or i == currentPage + 2 %}
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if currentPage < (totalSeries / limit)|round(0, 'ceil') %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ currentPage + 1 }}&search={{ search }}&status={{ status }}&sort={{ sort }}&direction={{ direction }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}

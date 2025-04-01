@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add New Series{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Add a New Series</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.overview) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.status) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.vote) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.popularity) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.genres) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.first_air_date) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.last_air_date) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.posterFile) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.tmdb_id) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
