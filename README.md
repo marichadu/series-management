@@ -40,9 +40,10 @@ Follow these steps to set up the project locally:
 3. **Install Dependencies**:
 Make sure you have Composer installed. Run the following command to install PHP dependencies:
 
+   ```bash
     composer install
 
-4. **Set Up the Database**:
+5. **Set Up the Database**:
    
 Update the .env file with your database credentials. For example:
    
