@@ -37,14 +37,14 @@ Follow these steps to set up the project locally:
    git clone https://github.com/your-username/series-management.git
    cd series-management
 
-3. **Install Dependencies**:
+2. **Install Dependencies**:
    
    Make sure you have Composer installed. Run the following command to install PHP dependencies:
 
    ```bash
     composer install
 
-5. **Set Up the Database**:
+3. **Set Up the Database**:
    
    Update the .env file with your database credentials. For example:
    
@@ -64,7 +64,7 @@ Follow these steps to set up the project locally:
     php bin/console doctrine:fixtures:load
 
 
-6. **Run the Development Server**:
+4. **Run the Development Server**:
 
    Start the Symfony development server:
     
