@@ -38,26 +38,27 @@ Follow these steps to set up the project locally:
    cd series-management
 
 3. **Install Dependencies**:
-Make sure you have Composer installed. Run the following command to install PHP dependencies:
+   
+   Make sure you have Composer installed. Run the following command to install PHP dependencies:
 
    ```bash
     composer install
 
 5. **Set Up the Database**:
    
-Update the .env file with your database credentials. For example:
+   Update the .env file with your database credentials. For example:
    
     ```bash
     DATABASE_URL="mysql://root:@127.0.0.1:3306/series"
     
-Then, create the database and run migrations:
+   Then, create the database and run migrations:
 
     ```bash
     php bin/console doctrine:database:create
     php bin/console doctrine:migrations:migrate
     
 
-Load Fixtures (Optional): If you want to load sample data, run:
+   Load Fixtures (Optional): If you want to load sample data, run:
 
     ```bash
     php bin/console doctrine:fixtures:load
@@ -65,12 +66,12 @@ Load Fixtures (Optional): If you want to load sample data, run:
 
 6. **Run the Development Server**:
 
-Start the Symfony development server:
+   Start the Symfony development server:
     
     ```bash
     symfony server:start
 
-The website will be accessible at the server's configured URL (e.g., http://localhost/series).
+   The website will be accessible at the server's configured URL (e.g., http://localhost/series).
 
 
 ## Usage
