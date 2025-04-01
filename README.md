@@ -51,7 +51,7 @@ Follow these steps to set up the project locally:
     ```bash
     DATABASE_URL="mysql://root:@127.0.0.1:3306/series"
     
-Then, create the database and run migrations:
+- Then, create the database and run migrations:
 
     ```bash
     php bin/console doctrine:database:create
