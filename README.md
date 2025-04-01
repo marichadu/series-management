@@ -8,7 +8,7 @@ The website is accessible at the server's configured URL (e.g., `http://localhos
 
 ### Preview
 
-![Website Preview](public/images/preview.png)
+![Website Preview](public/images/preview.PNG)
 
 ## Features
 
@@ -32,43 +32,45 @@ The website is accessible at the server's configured URL (e.g., `http://localhos
 Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
+   
    ```bash
    git clone https://github.com/your-username/series-management.git
    cd series-management
 
-2. **Install Dependencies**:
-    Make sure you have Composer installed. Run the following command to install PHP dependencies:
+3. **Install Dependencies**:
+Make sure you have Composer installed. Run the following command to install PHP dependencies:
 
     ```bash
     composer install
 
-3. **Set Up the Database**:
-    Update the .env file with your database credentials. For example:
+4. **Set Up the Database**:
+   
+Update the .env file with your database credentials. For example:
    
     ```bash
     DATABASE_URL="mysql://root:@127.0.0.1:3306/series"
     
-    Then, create the database and run migrations:
+Then, create the database and run migrations:
 
     ```bash
     php bin/console doctrine:database:create
     php bin/console doctrine:migrations:migrate
-    ````
+    
 
-    Load Fixtures (Optional): If you want to load sample data, run:
+Load Fixtures (Optional): If you want to load sample data, run:
 
     ```bash
     php bin/console doctrine:fixtures:load
 
 
-4. **Run the Development Server**:
+6. **Run the Development Server**:
 
-    Start the Symfony development server:
+Start the Symfony development server:
     
     ```bash
     symfony server:start
 
-    The website will be accessible at the server's configured URL (e.g., http://localhost/series).
+The website will be accessible at the server's configured URL (e.g., http://localhost/series).
 
 
 ## Usage
@@ -100,24 +102,9 @@ templates/: Contains Twig templates for rendering views.
 public/: Contains static assets like images, CSS, and JavaScript files.
 
 
-## Screenshots
-Series List
-
-
-Series Details
-
-
-Add New Series
-
-## Live Preview
-Click the button below to access the website:
-
-<img alt="Visit Website" src="https://img.shields.io/badge/Visit-Website-brightgreen">
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 ## Feedback and Suggestions
-Feel free to offer any suggestions or improvements to make this project even better! Contributions are welcome, and you can submit a pull request or open an issue on the GitHub repository.
+
+Feel free to offer any suggestions or improvements to make this project even better! 
+Contributions are welcome, and you can submit a pull request or open an issue on the GitHub repository.
 
 
